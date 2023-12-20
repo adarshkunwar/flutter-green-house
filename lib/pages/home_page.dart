@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_house/widgets/home_title.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,37 +28,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: ListView(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Best Plants For \nOur Green House",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
-                    ),
-                    Stack(
-                      children: [
-                        const CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(
-                              "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-                        ),
-                        Positioned(
-                          right: 0,
-                          child: CircleAvatar(
-                            radius: 10,
-                            backgroundColor: Theme.of(context).primaryColor,
-                            child: const Text(
-                              "2",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
-                            ),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
+                homeTitle(context),
                 SizedBox(
                   height: deviceHeight * 0.02,
                 ),
