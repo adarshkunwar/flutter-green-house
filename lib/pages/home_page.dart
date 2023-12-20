@@ -8,6 +8,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Map<String, dynamic>> categories = [
+    {"id": 1, "name": "All"},
+    {"id": 2, "name": "Indoor"},
+    {"id": 3, "name": "Outdoor"},
+    {"id": 4, "name": "Aromatic"},
+    {"id": 5, "name": "Succulent"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -96,6 +104,26 @@ class _HomePageState extends State<HomePage> {
                       ),
                     )
                   ],
+                ),
+                SizedBox(
+                  height: deviceHeight * 0.02,
+                ),
+                Container(
+                  height: deviceHeight * 0.06,
+                  // color: Colors.red,
+                  child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: categories
+                          .map((e) => Card(
+                                color: Colors.white,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 10),
+                                  child: Text(e["name"]),
+                                ),
+                              ))
+                          .toList()),
                 )
               ],
             )));
