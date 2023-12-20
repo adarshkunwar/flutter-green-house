@@ -34,7 +34,7 @@ class _LandingPageState extends State<LandingPage> {
           selectedItemColor: Theme.of(context).primaryColor,
           showSelectedLabels: false,
           unselectedItemColor: Colors.black,
-          selectedIconTheme: const IconThemeData(size: 35.00),
+          selectedIconTheme: const IconThemeData(size: 30.00),
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(

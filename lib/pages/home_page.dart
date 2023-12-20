@@ -8,13 +8,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map<String, dynamic>> categories = [
+  static List<Map<String, dynamic>> categories = [
     {"id": 1, "name": "All"},
     {"id": 2, "name": "Indoor"},
     {"id": 3, "name": "Outdoor"},
     {"id": 4, "name": "Aromatic"},
     {"id": 5, "name": "Succulent"},
   ];
+
+  Map<String, dynamic> selectedCategory = categories.first;
 
   @override
   Widget build(BuildContext context) {
@@ -108,19 +110,35 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: deviceHeight * 0.02,
                 ),
-                Container(
+                SizedBox(
                   height: deviceHeight * 0.06,
                   // color: Colors.red,
                   child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: categories
-                          .map((e) => Card(
-                                color: Colors.white,
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15, vertical: 10),
-                                  child: Text(e["name"]),
+                          .map((e) => InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    selectedCategory = e;
+                                  });
+                                },
+                                child: Card(
+                                  color: e == selectedCategory
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.white,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15, vertical: 10),
+                                    child: Text(
+                                      e["name"],
+                                      style: TextStyle(
+                                        color: e == selectedCategory
+                                            ? Colors.white
+                                            : Colors.grey[400],
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ))
                           .toList()),
