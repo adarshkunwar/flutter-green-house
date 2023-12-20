@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    double deviceHeight = MediaQuery.of(context).size.height;
+    double deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -43,6 +45,55 @@ class _HomePageState extends State<HomePage> {
                           ),
                         )
                       ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: deviceHeight * 0.02,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Card(
+                        elevation: 0.00,
+                        child: Container(
+                          height: 50,
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          // width: 300,
+                          child: (Row(
+                            children: [
+                              Icon(
+                                Icons.search,
+                                color: Colors.grey[400],
+                              ),
+                              SizedBox(
+                                width: deviceWidth * 0.02,
+                              ),
+                              Text(
+                                "Search Plant",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.grey[400],
+                                ),
+                              )
+                            ],
+                          )),
+                          // color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: deviceWidth * 0.02,
+                    ),
+                    FloatingActionButton(
+                      backgroundColor: Colors.black,
+                      splashColor: Theme.of(context).primaryColor,
+                      onPressed: () {},
+                      child: const Icon(
+                        Icons.filter_alt_outlined,
+                        color: Colors.white,
+                        size: 30,
+                      ),
                     )
                   ],
                 )
