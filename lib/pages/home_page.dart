@@ -108,15 +108,21 @@ class _HomePageState extends State<HomePage> {
                             child: Column(
                               children: [
                                 Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
                                   color: Colors.red,
                                   child: SizedBox(
                                     // color: Colors.red,
                                     width: double.infinity,
-                                    height: deviceHeight * 0.2,
-                                    child: const Image(
-                                      image: NetworkImage(
-                                          'https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                                      fit: BoxFit.cover,
+                                    height: deviceHeight * 0.18,
+
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: const Image(
+                                        image: NetworkImage(
+                                            'https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                   // height: deviceWidth * 0.35,
