@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_house/models/product_model.dart';
 import 'package:green_house/widgets/home_category.dart';
 import 'package:green_house/widgets/home_fliter.dart';
 import 'package:green_house/widgets/home_title.dart';
@@ -17,6 +18,44 @@ class _HomePageState extends State<HomePage> {
     {"id": 3, "name": "Outdoor"},
     {"id": 4, "name": "Aromatic"},
     {"id": 5, "name": "Succulent"},
+  ];
+
+  List<ProductModel> Product = [
+    ProductModel(
+        productName: "First Product",
+        productImage:
+            "https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        isFavorite: false,
+        category: 'category',
+        price: 20.1),
+    ProductModel(
+        productName: "Second Product",
+        productImage:
+            "https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        isFavorite: false,
+        category: 'category',
+        price: 20.1),
+    ProductModel(
+        productName: "Third Product",
+        productImage:
+            "https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        isFavorite: false,
+        category: 'category',
+        price: 20.1),
+    ProductModel(
+        productName: "Fourth Product",
+        productImage:
+            "https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        isFavorite: false,
+        category: 'category',
+        price: 20.1),
+    ProductModel(
+        productName: "Fifth Product",
+        productImage:
+            "https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        isFavorite: false,
+        category: 'category',
+        price: 20.1)
   ];
 
   Map<String, dynamic> selectedCategory = categories.first;
@@ -47,7 +86,25 @@ class _HomePageState extends State<HomePage> {
                       setState(() {
                         selectedCategory = category;
                       });
-                    })
+                    }),
+                SizedBox(
+                  height: deviceHeight * 0.02,
+                ),
+                Container(
+                  height: deviceHeight * 0.3,
+                  // color: Colors.red,
+                  child: ListView.builder(
+                      itemCount: 5,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (_, index) {
+                        return Card(
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 5),
+                            width: deviceWidth * 0.4,
+                          ),
+                        );
+                      }),
+                )
               ],
             )));
   }
