@@ -98,9 +98,31 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (_, index) {
                         return Card(
+                          elevation: 3.0,
+                          // color: Colors.white,
                           child: Container(
-                            margin: const EdgeInsets.only(left: 5),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 2, horizontal: 5),
+                            // margin: const EdgeInsets.only(left: 5),
                             width: deviceWidth * 0.4,
+                            child: Column(
+                              children: [
+                                Card(
+                                  color: Colors.red,
+                                  child: SizedBox(
+                                    // color: Colors.red,
+                                    width: double.infinity,
+                                    height: deviceHeight * 0.2,
+                                    child: const Image(
+                                      image: NetworkImage(
+                                          'https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  // height: deviceWidth * 0.35,
+                                )
+                              ],
+                            ),
                           ),
                         );
                       }),
