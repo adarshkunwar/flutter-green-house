@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:green_house/widgets/home_category.dart';
+import 'package:green_house/widgets/home_fliter.dart';
 import 'package:green_house/widgets/home_title.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,88 +34,20 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: deviceHeight * 0.02,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Card(
-                        elevation: 0.00,
-                        child: Container(
-                          height: 50,
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          // width: 300,
-                          child: (Row(
-                            children: [
-                              Icon(
-                                Icons.search,
-                                color: Colors.grey[400],
-                              ),
-                              SizedBox(
-                                width: deviceWidth * 0.02,
-                              ),
-                              Text(
-                                "Search Plant",
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.grey[400],
-                                ),
-                              )
-                            ],
-                          )),
-                          // color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: deviceWidth * 0.02,
-                    ),
-                    FloatingActionButton(
-                      backgroundColor: Colors.black,
-                      splashColor: Theme.of(context).primaryColor,
-                      onPressed: () {},
-                      child: const Icon(
-                        Icons.filter_alt_outlined,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                    )
-                  ],
-                ),
+                homeFilter(context),
                 SizedBox(
                   height: deviceHeight * 0.02,
                 ),
-                SizedBox(
-                  height: deviceHeight * 0.06,
-                  // color: Colors.red,
-                  child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: categories
-                          .map((e) => InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    selectedCategory = e;
-                                  });
-                                },
-                                child: Card(
-                                  color: e == selectedCategory
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.white,
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 10),
-                                    child: Text(
-                                      e["name"],
-                                      style: TextStyle(
-                                        color: e == selectedCategory
-                                            ? Colors.white
-                                            : Colors.grey[400],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ))
-                          .toList()),
-                )
+                homeCategory(
+                    context: context,
+                    deviceHeight: deviceHeight,
+                    categories: categories,
+                    selectedCategory: selectedCategory,
+                    onclick: (Map<String, dynamic> category) {
+                      setState(() {
+                        selectedCategory = category;
+                      });
+                    })
               ],
             )));
   }
