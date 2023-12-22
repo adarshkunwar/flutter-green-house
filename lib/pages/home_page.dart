@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     ProductModel(
         productName: "First Product",
         productImage:
-            "https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/18926843/pexels-photo-18926843/free-photo-of-rough-volcanic-rock-formation.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         isFavorite: false,
         category: 'category',
         price: 20.1),
@@ -122,9 +122,8 @@ class _HomePageState extends State<HomePage> {
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          child: const Image(
-                                            image: NetworkImage(
-                                                'https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                                          child: Image.network(
+                                            product[index].productImage,
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -136,9 +135,11 @@ class _HomePageState extends State<HomePage> {
                                       top: 10,
                                       child: InkWell(
                                         onTap: () {},
-                                        child: const Icon(
+                                        child: Icon(
                                           Icons.favorite,
-                                          color: Colors.white,
+                                          color: product[index].isFavorite
+                                              ? Colors.red
+                                              : Colors.white,
                                         ),
                                       ),
                                     )
@@ -161,13 +162,17 @@ class _HomePageState extends State<HomePage> {
                                             MainAxisAlignment.end,
                                         children: [
                                           Text(
-                                            "Category",
+                                            "Name",
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
-                                                color: Colors.grey[400],
+                                                color: Colors.grey[600],
                                                 fontSize: 12),
                                           ),
                                           Text(
-                                            "name",
+                                            product[index].productName,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 color: Colors.grey[800],
                                                 fontSize: 18,
@@ -175,12 +180,16 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                           Text(
                                             "Price",
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 color: Colors.grey[400],
                                                 fontSize: 12),
                                           ),
                                           Text(
-                                            "\$ 1.0",
+                                            "\$ ${product[index].price}",
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 color: Colors.grey[800],
                                                 fontSize: 20,
