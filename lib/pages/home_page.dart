@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     {"id": 5, "name": "Succulent"},
   ];
 
-  List<ProductModel> Product = [
+  List<ProductModel> product = [
     ProductModel(
         productName: "First Product",
         productImage:
@@ -90,8 +90,8 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: deviceHeight * 0.02,
                 ),
-                Container(
-                  height: deviceHeight * 0.3,
+                SizedBox(
+                  height: deviceHeight * 0.32,
                   // color: Colors.red,
                   child: ListView.builder(
                       itemCount: 5,
@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                           // color: Colors.white,
                           child: Container(
                             padding: const EdgeInsets.symmetric(
-                                vertical: 2, horizontal: 5),
+                                vertical: 5, horizontal: 5),
                             // margin: const EdgeInsets.only(left: 5),
                             width: deviceWidth * 0.4,
                             child: Column(
@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                                   child: SizedBox(
                                     // color: Colors.red,
                                     width: double.infinity,
-                                    height: deviceHeight * 0.18,
+                                    height: deviceHeight * 0.17,
 
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
@@ -126,7 +126,75 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   // height: deviceWidth * 0.35,
-                                )
+                                ),
+                                Expanded(
+                                    child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                        child: Container(
+                                      padding: const EdgeInsets.all(2),
+                                      // color: Colors.blue,
+                                      height: double.maxFinite,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            "Category",
+                                            style: TextStyle(
+                                                color: Colors.grey[400],
+                                                fontSize: 12),
+                                          ),
+                                          Text(
+                                            "name",
+                                            style: TextStyle(
+                                                color: Colors.grey[800],
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                          Text(
+                                            "Price",
+                                            style: TextStyle(
+                                                color: Colors.grey[400],
+                                                fontSize: 12),
+                                          ),
+                                          Text(
+                                            "\$ 1.0",
+                                            style: TextStyle(
+                                                color: Colors.grey[800],
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600),
+                                          )
+                                        ],
+                                      ),
+                                    )),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        InkWell(
+                                          child: Container(
+                                            height: 40,
+                                            width: 40,
+                                            alignment: Alignment.center,
+                                            // color: Colors.yellow,
+                                            decoration: BoxDecoration(
+                                                color: Colors.green,
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: const Icon(
+                                              Icons.add,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ))
                               ],
                             ),
                           ),
