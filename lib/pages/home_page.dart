@@ -107,25 +107,42 @@ class _HomePageState extends State<HomePage> {
                             width: deviceWidth * 0.4,
                             child: Column(
                               children: [
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  color: Colors.red,
-                                  child: SizedBox(
-                                    // color: Colors.red,
-                                    width: double.infinity,
-                                    height: deviceHeight * 0.17,
+                                Stack(
+                                  children: [
+                                    Card(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      color: Colors.red,
+                                      child: SizedBox(
+                                        // color: Colors.red,
+                                        width: double.infinity,
+                                        height: deviceHeight * 0.17,
 
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: const Image(
-                                        image: NetworkImage(
-                                            'https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                                        fit: BoxFit.cover,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: const Image(
+                                            image: NetworkImage(
+                                                'https://images.pexels.com/photos/4075551/pexels-photo-4075551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                       ),
+                                      // height: deviceWidth * 0.35,
                                     ),
-                                  ),
-                                  // height: deviceWidth * 0.35,
+                                    Positioned(
+                                      right: 10,
+                                      top: 10,
+                                      child: InkWell(
+                                        onTap: () {},
+                                        child: const Icon(
+                                          Icons.favorite,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                                 Expanded(
                                     child: Row(
