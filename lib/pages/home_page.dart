@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:green_house/models/product_model.dart';
 import 'package:green_house/widgets/home_category.dart';
@@ -92,6 +94,88 @@ class _HomePageState extends State<HomePage> {
                   height: deviceHeight * 0.02,
                 ),
                 productCardCollection(context: context, product: product),
+                SizedBox(
+                  height: deviceHeight * 0.02,
+                ),
+                SizedBox(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Popular",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: deviceHeight * 0.005,
+                      ),
+                      SizedBox(
+                        height: deviceWidth * 0.3,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 5,
+                            itemBuilder: (_, index) {
+                              return Card(
+                                elevation: 5,
+                                color: Colors.white,
+                                child: Container(
+                                  width: deviceWidth * 0.6,
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 5, horizontal: 5),
+                                  // height: deviceHeight * 0.2,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: deviceWidth * 0.3,
+                                        // height: double.infinity,
+                                        color: Colors.red,
+                                        child: Image.network(
+                                          product[index].productImage,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10, horizontal: 5),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Text(
+                                              product[index].category,
+                                              style: const TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w300),
+                                            ),
+                                            Text(
+                                              product[index].productName,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: const TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w800),
+                                            ),
+                                            Text(
+                                              '\$ ${product[index].price} ',
+                                              style: const TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w800),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }),
+                      )
+                    ],
+                  ),
+                )
               ],
             )));
   }
