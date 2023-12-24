@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:green_house/models/product_model.dart';
 
-Widget productCardCollection(
-    {required context, required List<ProductModel> product}) {
+Widget productCardCollection({
+  required context,
+  required List<ProductModel> product,
+  required Function onclick,
+  required String selectedCategory,
+}) {
   double deviceHeight = MediaQuery.of(context).size.height;
   double deviceWidth = MediaQuery.of(context).size.width;
   return SizedBox(
@@ -46,7 +50,9 @@ Widget productCardCollection(
                         right: 10,
                         top: 10,
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            onclick(index);
+                          },
                           child: Icon(
                             Icons.favorite,
                             color: product[index].isFavorite

@@ -1,4 +1,4 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:green_house/models/product_model.dart';
@@ -93,7 +93,15 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: deviceHeight * 0.02,
                 ),
-                productCardCollection(context: context, product: product),
+                productCardCollection(
+                    context: context,
+                    product: product,
+                    selectedCategory: selectedCategory['name'],
+                    onclick: (int index) {
+                      setState(() {
+                        product[index].isFavorite = !product[index].isFavorite;
+                      });
+                    }),
                 SizedBox(
                   height: deviceHeight * 0.02,
                 ),
@@ -127,44 +135,53 @@ class _HomePageState extends State<HomePage> {
                                   child: Row(
                                     children: [
                                       Container(
-                                        width: deviceWidth * 0.3,
+                                        width: deviceWidth * 0.25,
                                         // height: double.infinity,
-                                        color: Colors.red,
-                                        child: Image.network(
-                                          product[index].productImage,
-                                          fit: BoxFit.cover,
+                                        // color: Colors.red,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: Image.network(
+                                            product[index].productImage,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 10, horizontal: 5),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Text(
-                                              product[index].category,
-                                              style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w300),
-                                            ),
-                                            Text(
-                                              product[index].productName,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w800),
-                                            ),
-                                            Text(
-                                              '\$ ${product[index].price} ',
-                                              style: const TextStyle(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.w800),
-                                            )
-                                          ],
+                                      Expanded(
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 10, horizontal: 5),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Text(
+                                                product[index].category,
+                                                style: const TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w300),
+                                              ),
+                                              Text(
+                                                product[index].productName,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w800),
+                                              ),
+                                              Text(
+                                                '\$ ${product[index].price} ',
+                                                style: const TextStyle(
+                                                    fontSize: 22,
+                                                    fontWeight:
+                                                        FontWeight.w800),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       )
                                     ],
